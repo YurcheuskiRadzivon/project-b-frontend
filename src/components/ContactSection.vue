@@ -29,8 +29,8 @@ export default {
   name: 'ContactSection',
   data() {
     return {
-      address: 'г. Москва, ул. Лесная, д. 5',
-      phone: '+79991234567',
+      address: 'г. Варшава',
+      phone: '+48 798 412 578',
       email: 'booking@banya.ru'
     }
   },
