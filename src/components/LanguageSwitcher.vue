@@ -36,25 +36,27 @@
 
 <style scoped>
 .select {
-  width: fit-content;
-  cursor: pointer;
-  position: relative;
-  transition: 300ms;
-  color: black;
-  overflow: hidden;
+    width: fit-content;
+    cursor: pointer;
+    transition: 300ms;
+    color: black;
+    overflow: visible; /* Изменено с hidden */
+    position: relative; /* Изменено с absolute */
+    height: 30px; /* Фиксированная высота */
 }
 
 .selected {
-  background-color: rgba(255, 255, 255, 0.95);
-  padding: 5px;
-  margin-bottom: 3px;
-  border-radius: 5px;
-  position: relative;
-  z-index: 100000;
-  font-size: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 5px;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    position: relative;
+    z-index: 100000;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
 }
 
 .arrow {
@@ -69,20 +71,23 @@
 }
 
 .options {
-  display: flex;
-  flex-direction: column;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: rgba(255, 255, 255, 0.95);
-  position: relative;
-  top: -100px;
-  opacity: 0;
-  transition: 300ms;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 100%; /* Изменено с -100px */
+    left: 0;
+    opacity: 0;
+    transition: 300ms;
+    z-index: 1001;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 
 .select:hover > .options {
-  opacity: 1;
-  top: 0;
+    opacity: 1;
+    top: 100%; /* Остается на месте при открытии */
 }
 
 .select:hover > .selected .arrow {
@@ -99,6 +104,7 @@
 }
 .option:hover {
   background-color: #8b6f47;
+  color: #fff;
 }
 
 .options input[type="radio"] {

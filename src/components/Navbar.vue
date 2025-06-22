@@ -11,7 +11,7 @@
         <li class="nav-book-li">
           <button class="nav-book-btn" @click="scrollToBooking">Записаться</button>
         </li>
-        <li><LanguageSwitcher/></li>
+        <li class="switcher"><LanguageSwitcher/></li>
       </ul>
     </div>
   </nav>
@@ -68,6 +68,7 @@ export default {
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
+    height: 72px ;
 }
 
 .nav-container {
@@ -153,12 +154,22 @@ export default {
     margin-left: auto;
 }
 
+li.switcher{
+   position: relative;
+    height: 30px; /* Фиксированная высота для li */
+    display: flex;
+    align-items: center;
+}
+
 /* Responsive Navigation */
 @media (max-width: 768px) {
     .mobile-menu-toggle {
         display: block;
+        order: 1;
     }
-
+ .logo {
+        order: 0; /* Лого слева */
+    }
     .nav-menu {
         display: none; /* Hide menu by default on mobile */
     }
@@ -167,6 +178,15 @@ export default {
         display: flex; /* Show menu when toggled */
     }
     
+     li.switcher {
+         position: absolute;
+        right: 60px; /* Отступ от правого края */
+        /* top: 50%; */
+        /* transform: translateY(-50%); */
+        margin: 0;
+        order: 2;
+    }
+
     .nav-book-li {
         margin-top: 1rem;
         margin-left: 0;
