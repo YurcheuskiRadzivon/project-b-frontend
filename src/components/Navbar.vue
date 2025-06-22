@@ -11,13 +11,17 @@
         <li class="nav-book-li">
           <button class="nav-book-btn" @click="scrollToBooking">Записаться</button>
         </li>
+        <li><LanguageSwitcher/></li>
       </ul>
     </div>
   </nav>
 </template>
 
 <script>
+import LanguageSwitcher from './LanguageSwitcher.vue';
+
 export default {
+  components:{LanguageSwitcher},
   name: 'Navbar',
   data() {
     return {
