@@ -25,8 +25,8 @@ export default {
     scrollToBooking() {
       this.$emit('scroll-to-booking');
       // Или напрямую, если не используется событие:
-      // const target = document.getElementById('schedule');
-      // if (target) target.scrollIntoView({ behavior: 'smooth' });
+      const target = document.getElementById('schedule');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
     }
   }
 }

@@ -41,7 +41,7 @@
       
       <div v-if="loading" class="loader"></div>
       
-      <div v-if="showTimeSlots" class="time-slots">
+      <div v-if="showTimeSlots" class="time-slots" id="timeSlots">
         <h3>Выберите время:</h3>
         <div class="slots-grid">
           <div 
@@ -201,10 +201,20 @@ export default {
       const year = day.date.getFullYear();
       const month = day.date.getMonth() + 1; // Месяцы в JS: 0-11
       const dayNum = day.date.getDate();
-      
+
       try {
-        this.busyTimes = await this.fetchBookedSlotsForDate(year, month, dayNum);
-        this.showTimeSlots = true;
+      this.busyTimes = await this.fetchBookedSlotsForDate(year, month, dayNum);
+      this.showTimeSlots = true;
+      
+     this.$nextTick(() => {
+      const element = document.getElementById('timeSlots');
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start' // или 'center', 'end' - в зависимости от нужного положения
+        });
+      }
+    });
       } catch (error) {
         console.error('Ошибка при загрузке времени:', error);
         alert('Не удалось загрузить доступное время');
