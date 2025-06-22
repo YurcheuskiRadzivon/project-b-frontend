@@ -289,7 +289,6 @@ export default {
 </script>
 
 <style scoped>
-/* Schedule Section */
 .schedule-section {
   padding: 4rem 20px;
   background: var(--light-gray);
@@ -491,7 +490,7 @@ export default {
 
 @media (max-width: 480px) {
   .calendar-container {
-    padding: 1rem;
+    padding: 0.8rem;
   }
   
   .calendar-day {

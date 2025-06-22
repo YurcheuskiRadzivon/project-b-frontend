@@ -46,7 +46,7 @@
 }
 
 .selected {
-    background-color: rgba(255, 255, 255, 0.95);
+    
     padding: 5px;
     margin-bottom: 3px;
     border-radius: 5px;
