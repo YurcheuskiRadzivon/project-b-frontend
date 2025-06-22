@@ -290,7 +290,7 @@ export default {
 
 <style scoped>
 .schedule-section {
-  padding: 4rem 20px;
+  padding: 4rem 10px;
   background: var(--light-gray);
 }
 
