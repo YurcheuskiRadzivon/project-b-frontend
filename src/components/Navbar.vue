@@ -1,15 +1,15 @@
 <template>
   <nav class="navbar">
     <div class="nav-container">
-      <div class="logo">Баня</div>
+      <div class="logo">{{ $t('banya') }}</div>
       <button class="mobile-menu-toggle" @click="toggleMobileMenu">☰</button>
       <ul class="nav-menu" :class="{ 'mobile-open': isMenuOpen }">
-        <li><a href="#home" @click="smoothScroll">Главная</a></li>
-        <li><a href="#schedule" @click="smoothScroll">Расписание</a></li>
-        <li><a href="#services" @click="smoothScroll">Услуги</a></li>
-        <li><a href="#contact" @click="smoothScroll">Контакты</a></li>
+        <li><a href="#home" @click="smoothScroll">{{ $t('home') }}</a></li>
+        <li><a href="#schedule" @click="smoothScroll">{{ $t('schedule') }}</a></li>
+        <li><a href="#services" @click="smoothScroll">{{ $t('services') }}</a></li>
+        <li><a href="#contact" @click="smoothScroll">{{ $t('contact') }}</a></li>
         <li class="nav-book-li">
-          <button class="nav-book-btn" @click="scrollToBooking">Записаться</button>
+          <button class="nav-book-btn" @click="scrollToBooking">{{ $t('bookSessionMini') }}</button>
         </li>
         <li class="switcher"><LanguageSwitcher/></li>
       </ul>

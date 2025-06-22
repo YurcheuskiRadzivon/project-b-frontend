@@ -13,6 +13,7 @@ export default {
     BookingSection,
     Navbar,
     HeroSection,
+    FeaturesSection,
     ServicesGrid,
     StatsSection,
     BookingSection,
@@ -50,7 +51,7 @@ export default {
 <template>
     <Navbar />
     <HeroSection @scroll-to-booking="handleScrollToBooking" />
-    <FeaturesSection />
+    <FeaturesSection /> 
     <ServicesGrid :services="servicesList" />
     <StatsSection
     :statsNumber="statsNumber"

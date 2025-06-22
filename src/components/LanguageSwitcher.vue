@@ -1,38 +1,84 @@
 <template>
-    <div class="select">
-  <div
-    class="selected"
-    data-default="en"
-    data-one="sw"
-    data-two="ru"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height="1em"
-      viewBox="0 0 512 512"
-      class="arrow"
+  <div class="select" @mouseleave="closeMenu">
+    <div
+      class="selected"
+      :data-current="currentLanguage"
+      @mouseover="openMenu"
     >
-      <path
-        d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-      ></path>
-    </svg>
+      <span class="current-lang">{{ currentLanguage }}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="1em"
+        viewBox="0 0 512 512"
+        class="arrow"
+        :class="{ rotated: isMenuOpen }"
+      >
+        <path
+          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
+        ></path>
+      </svg>
+    </div>
+    <div class="options" v-show="isMenuOpen">
+      <div title="en" @click="setLanguage('en')">
+        <input id="en" name="option" type="radio" :checked="currentLanguage === 'en'" />
+        <label class="option" for="en" data-txt="en"></label>
+      </div>
+      <div title="sw" @click="setLanguage('sw')">
+        <input id="sw" name="option" type="radio" :checked="currentLanguage === 'sw'" />
+        <label class="option" for="sw" data-txt="sw"></label>
+      </div>
+      <div title="ru" @click="setLanguage('ru')">
+        <input id="ru" name="option" type="radio" :checked="currentLanguage === 'ru'" />
+        <label class="option" for="ru" data-txt="ru"></label>
+      </div>
+    </div>
   </div>
-  <div class="options">
-    <div title="en">
-      <input id="en" name="option" type="radio" checked />
-      <label class="option" for="en" data-txt="en"></label>
-    </div>
-    <div title="sw">
-      <input id="sw" name="option" type="radio" />
-      <label class="option" for="sw" data-txt="sw"></label>
-    </div>
-    <div title="ru">
-      <input id="ru" name="option" type="radio" />
-      <label class="option" for="ru" data-txt="ru"></label>
-    </div>
-  </div>
-</div>
 </template>
+
+<script>
+import { changeLanguage, i18n } from '../plugins/i18n'; // Импортируем i18n
+
+export default {
+  name: 'LanguageSwitcher',
+  data() {
+    return {
+      isMenuOpen: false,
+      currentLanguage: 'en' // Начальное значение
+    }
+  },
+  mounted() {
+    // При загрузке компонента проверяем сохраненный язык
+    const savedLang = localStorage.getItem('locale');
+    if (savedLang) {
+      this.currentLanguage = savedLang;
+    } else {
+      // Если нет сохраненного, используем язык по умолчанию
+      this.currentLanguage = i18n.global.locale.value;
+    }
+  },
+  methods: {
+    openMenu() {
+      this.isMenuOpen = true;
+    },
+    closeMenu() {
+      this.isMenuOpen = false;
+    },
+    setLanguage(lang) {
+      // Устанавливаем язык в компоненте
+      this.currentLanguage = lang;
+      
+      // Сохраняем в localStorage
+      localStorage.setItem('locale', lang);
+      
+      // Устанавливаем язык во всем приложении
+      changeLanguage(lang);
+      
+      // Закрываем меню
+      this.closeMenu();
+    }
+  }
+}
+</script>
 
 <style scoped>
 .select {
@@ -137,4 +183,8 @@
 }
 
 
+/* Обновили селектор для отображения текущего языка */
+.selected::before {
+  content: attr(data-current);
+}
 </style>

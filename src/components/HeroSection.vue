@@ -1,9 +1,9 @@
 <template>
   <section id="home" class="hero">
     <div class="hero-content">
-      <h1>{{ title }}</h1>
-      <p>{{ description }}</p>
-      <button class="cta-button" @click="scrollToBooking">Записаться на сеанс</button>
+      <h1>{{ $t('bannerTitle') }}</h1>
+      <p>{{ $t('bannerSubtitle') }}</p>
+      <button class="cta-button" @click="scrollToBooking">{{ $t('bookSession') }}</button>
     </div>
   </section>
 </template>
@@ -11,16 +11,6 @@
 <script>
 export default {
   name: 'HeroSection',
-  props: {
-    title: {
-      type: String,
-      default: 'Русская баня — настоящий отдых для души и тела'
-    },
-    description: {
-      type: String,
-      default: 'Традиционная русская баня с березовыми вениками и парной премиум-класса'
-    }
-  },
   methods: {
     scrollToBooking() {
       this.$emit('scroll-to-booking');
