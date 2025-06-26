@@ -27,10 +27,6 @@
         <input id="sw" name="option" type="radio" :checked="currentLanguage === 'sw'" />
         <label class="option" for="sw" data-txt="sw"></label>
       </div>
-      <div title="ru" @click="setLanguage('ru')">
-        <input id="ru" name="option" type="radio" :checked="currentLanguage === 'ru'" />
-        <label class="option" for="ru" data-txt="ru"></label>
-      </div>
     </div>
   </div>
 </template>
@@ -177,9 +173,6 @@ export default {
 }
 .select:has(.options input[type="radio"]#sw:checked) .selected::before {
   content: attr(data-one);
-}
-.select:has(.options input[type="radio"]#ru:checked) .selected::before {
-  content: attr(data-two);
 }
 
 

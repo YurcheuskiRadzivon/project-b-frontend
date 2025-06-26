@@ -1,6 +1,5 @@
 import { createI18n } from 'vue-i18n'; // Импортируем createI18n вместо VueI18n
 import en from '../locales/en.yml?raw'
-import ru from '../locales/ru.yml?raw'
 import sw from '../locales/sw.yml?raw'
 import yaml from 'js-yaml'
 // Проверяем сохраненный язык в localStorage
@@ -15,7 +14,6 @@ export const i18n = createI18n({
   fallbackLocale: 'en',
   messages: {
     en: parseYaml(en),
-    ru: parseYaml(ru),
     sw: parseYaml(sw)
   },
   silentTranslationWarn: true

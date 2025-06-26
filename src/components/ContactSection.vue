@@ -31,7 +31,7 @@ export default {
     return {
       address: 'г. Варшава',
       phone: '+48 798 412 578',
-      email: 'booking@banya.ru'
+      email: 'booking@banya.pl'
     }
   },
   computed: {
